@@ -1,0 +1,2 @@
+This repository consists of a set of python scripts which count the number of occurences of words in a given directory consisting of *.txt files (the other files are ignored). The word count is calculated for each unique word occuring in all the documents considered together. 
+for any further discussions please mail me at <eerpini@gmail.com>
