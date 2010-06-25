@@ -20,7 +20,6 @@ def multiple_sep_split(string,maxsplit, spacealso,args):
                     break
         if prev_split != len(string):
             return_list.append(string[prev_split:])
-
     else:
         prev_split=0
         for i in range(len(string)):
@@ -29,7 +28,6 @@ def multiple_sep_split(string,maxsplit, spacealso,args):
                 prev_split=i+1
         if prev_split != len(string):
             return_list.append(string[prev_split:])
-
     #removing blank members, I do not know how to do this more elegantly 
     for val in return_list:
         if val != '':
@@ -46,7 +44,5 @@ def count_words(path):
     #print words
     for value in words:
         word_count_dict[value] = word_count_dict.get(value, 0)+1
-
-
     return word_count_dict
 
