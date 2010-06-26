@@ -6,5 +6,10 @@ the gen_doc_class_input.py is the main script run it as follows :
 
 $python gen_doc_class_input.py <path to a directory with *.txt files>
 
+if you want the final word count vectors to be written to a file , use the program as follows :
+
+$python gen_doc_class_input.py <path to a directory with *.txt files> -f <output_file_name>
+
+note : the first argument should always be the path, and -f should always be followed by the file name to write to.
 
 for any further discussions please mail me at <eerpini@gmail.com>

@@ -11,12 +11,12 @@ from print_dict import *
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         file_wc_map = {}
-        for file in os.listdir(sys.argv[1]):
-            file = os.path.join(sys.argv[1], file)
-            if os.path.isfile(file) and file.endswith(".txt"):
-                file_wc_map[file] = count_words(file)
+        for txt_file in os.listdir(sys.argv[1]):
+            txt_file = os.path.join(sys.argv[1], txt_file)
+            if os.path.isfile(txt_file) and txt_file.endswith(".txt"):
+                file_wc_map[txt_file] = count_words(txt_file)
             else:
-                print file, " : File is not a valid text file"
+                print txt_file, " : File is not a valid text file"
         #now let us try to build a dict of all words
         #I am using a dict with update and fromkeys since this 
         #does not require extra effort to eliminate word recurrences
@@ -32,8 +32,8 @@ if __name__ == '__main__':
         #individual file Word Counts whenever a word is not present at all
         #this will bring the word count vectors to equal sizes and order
         for word in sorted(all_words.keys()):
-            for file in file_wc_map.keys():
-                file_wc_map[file][word] = file_wc_map[file].get(word,0)
+            for txt_file in file_wc_map.keys():
+                file_wc_map[txt_file][word] = file_wc_map[txt_file].get(word,0)
 
         #lets print the list of words in sorted order
         print "[ ",
@@ -41,9 +41,20 @@ if __name__ == '__main__':
             print word,
         print " ]"
         #lets print the final equal sized Word Count vectors
-        for key in file_wc_map.keys():
-            print key 
-            print_d(file_wc_map[key],1)
+        # we will print them to a file if the '-f' option is specified.
+        if "-f" in sys.argv:
+            if len(sys.argv)<= sys.argv.index("-f")+1:
+                print "Please give the file name to write to"
+                sys.exit(0)
+            else:
+                output_file = file(sys.argv[sys.argv.index("-f")+1],"w")
+            for key in file_wc_map.keys():
+                print >>output_file, key
+                print_d(file_wc_map[key],1, output_file )
+        else:
+            for key in file_wc_map.keys():
+                print key 
+                print_d(file_wc_map[key],1)
 
 
     else:
