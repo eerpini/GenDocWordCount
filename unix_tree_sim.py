@@ -14,7 +14,7 @@ def list_dir(path, level=1):
             for i in range(1,level):
                 print "|    ",
             print "|--- ",
-            print "\033[1;36m%s\033[0;39m" % os.path.basename(file)
+            print "%s" % os.path.basename(file)
             list_dir(file, level+1)
         else:
             print "Trying to print"+file+"from the directory"+os.getcwd()
